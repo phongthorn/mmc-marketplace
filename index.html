@@ -37,6 +37,8 @@
         /* Theme tokens — switched by data-theme on body */
         body { --brand: #00377A; --brand-soft: rgba(0,55,122,0.10); --accent: #C5A059; --bg-surface: #F8FAFC; }
         body[data-theme="tvnd"] { --brand: #cc5747; --brand-soft: rgba(204,87,71,0.10); --accent: #213b2e; --bg-surface: #efeae5; }
+        body[data-theme="pplz"] { --brand: #324283; --brand-soft: rgba(50,66,131,0.10); --accent: #DFD39D; --bg-surface: #FFFAE2; }
+        body[data-theme="tsr"]  { --brand: #554C3B; --brand-soft: rgba(85,76,59,0.10); --accent: #8E7E62; --bg-surface: #F4F0EE; }
 
         body { background-color: var(--bg-surface); transition: background-color 0.4s ease; }
         .bg-brand { background-color: var(--brand); }
@@ -58,6 +60,12 @@
         }
         body[data-theme="tvnd"] .montara-logo {
             filter: brightness(0) saturate(100%) invert(45%) sepia(54%) saturate(550%) hue-rotate(335deg) brightness(92%) contrast(86%);
+        }
+        body[data-theme="pplz"] .montara-logo {
+            filter: brightness(0) saturate(100%) invert(20%) sepia(45%) saturate(1800%) hue-rotate(215deg) brightness(75%) contrast(95%);
+        }
+        body[data-theme="tsr"] .montara-logo {
+            filter: brightness(0) saturate(100%) invert(28%) sepia(15%) saturate(550%) hue-rotate(5deg) brightness(95%) contrast(85%);
         }
     </style>
 </head>
@@ -611,8 +619,8 @@
 
         const categories = [
             { label: 'All', icon: 'fa-grip', type: 'all' },
-            { label: 'TSR', full: 'Trisara', icon: 'fa-building', type: 'property', theme: 'mmc' },
-            { label: 'PPLZ', full: 'Praya Palazzo', icon: 'fa-building', type: 'property', theme: 'mmc' },
+            { label: 'TSR', full: 'Trisara', icon: 'fa-spa', type: 'property', theme: 'tsr' },
+            { label: 'PPLZ', full: 'Praya Palazzo', icon: 'fa-landmark', type: 'property', theme: 'pplz' },
             { label: 'MMC', full: 'Montara HQ', icon: 'fa-building', type: 'property', theme: 'mmc' },
             { label: 'TVND', full: 'Tri Vananda', icon: 'fa-leaf', type: 'property', theme: 'tvnd' },
             { label: 'Electronics', icon: 'fa-laptop', type: 'category' },
@@ -699,8 +707,8 @@
         function selectCategory(label) {
             activeCategory = label;
             const cat = categories.find(c => c.label === label);
-            const theme = cat && cat.theme === 'tvnd' ? 'tvnd' : 'mmc';
-            document.body.setAttribute('data-theme', theme === 'tvnd' ? 'tvnd' : '');
+            const theme = (cat && cat.theme && cat.theme !== 'mmc') ? cat.theme : '';
+            document.body.setAttribute('data-theme', theme);
             renderCategories();
             renderProducts();
         }
