@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montara Staff Market | Hotel Staff Marketplace</title>
+    <title>Montara Staff Market</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
         /* Theme tokens — switched by data-theme on body */
         body { --brand: #00377A; --brand-soft: rgba(0,55,122,0.10); --accent: #C5A059; --bg-surface: #F8FAFC; }
         body[data-theme="tvnd"] { --brand: #cc5747; --brand-soft: rgba(204,87,71,0.10); --accent: #213b2e; --bg-surface: #efeae5; }
-        body[data-theme="pplz"] { --brand: #324283; --brand-soft: rgba(50,66,131,0.10); --accent: #DFD39D; --bg-surface: #FFF4C4; }
+        body[data-theme="pplz"] { --brand: #B8860B; --brand-soft: rgba(184,134,11,0.10); --accent: #324283; --bg-surface: #FFF4C4; }
         body[data-theme="tsr"]  { --brand: #554C3B; --brand-soft: rgba(85,76,59,0.10); --accent: #C9A86A; --bg-surface: #F4F0EE; }
 
         body { background-color: var(--bg-surface); transition: background-color 0.4s ease; }
@@ -62,7 +62,7 @@
             filter: brightness(0) saturate(100%) invert(45%) sepia(54%) saturate(550%) hue-rotate(335deg) brightness(92%) contrast(86%);
         }
         body[data-theme="pplz"] .montara-logo {
-            filter: brightness(0) saturate(100%) invert(20%) sepia(45%) saturate(1800%) hue-rotate(215deg) brightness(75%) contrast(95%);
+            filter: brightness(0) saturate(100%) invert(55%) sepia(72%) saturate(900%) hue-rotate(15deg) brightness(82%) contrast(95%);
         }
         body[data-theme="tsr"] .montara-logo {
             filter: brightness(0) saturate(100%) invert(28%) sepia(15%) saturate(550%) hue-rotate(5deg) brightness(95%) contrast(85%);
@@ -751,7 +751,7 @@
                 <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm active:scale-95 transition-transform cursor-pointer" onclick="openProduct(${p.id})">
                     <div class="aspect-square relative overflow-hidden bg-slate-50">
                         <img src="${p.images[0]}" class="w-full h-full object-cover" loading="lazy">
-                        <span class="absolute top-2 left-2 px-2 py-0.5 bg-brand/85 backdrop-blur-sm text-white text-[9px] font-black uppercase rounded-lg tracking-wider">
+                        <span class="absolute top-2 left-2 px-2 py-0.5 bg-brand text-white text-[9px] font-black uppercase rounded-lg tracking-wider">
                             ${propertyShort[p.property] || p.property}
                         </span>
                     </div>
