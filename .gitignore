@@ -3,3 +3,12 @@
 
 # Backup files
 *.bak
+
+# Source asset files (large Excel/PDF — not for repo)
+/asset/
+
+# Temp scratch files
+_*.tmp
+
+# Downloads
+*.zip

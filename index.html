@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montara Staff Market</title>
+    <title>Montara Staff Market — Asset Resale</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -428,158 +428,135 @@
     <script>
         const products = [
             {
-                id: 1, title: "iPhone 15 Pro Max 256GB", price: "38,500", condition: "Like New 99%",
-                property: "Montara HQ", category: "Electronics", seller: "Pisak T. (IT)", sellerKey: "pisak",
-                images: [
-                    "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=800",
-                    "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=800",
-                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800"
-                ],
-                desc: "iPhone 15 Pro Max 256GB Natural Titanium. Bought 6 months ago, original box and accessories included. AppleCare+ valid until Aug 2026. No scratches, always with case and screen protector."
+                id: 1, title: "Coffee Table 130x110x60", price: "1,887", condition: "Excellent",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Tu (HK)", sellerKey: "tu-pplz",
+                images: ["assets/products/1.jpg"],
+                desc: "Solid wood coffee table from heritage room collection. Light surface marks, structurally excellent. Lobby/lounge use. Dimensions: 129x124x60 cm. Asset code: BRF602001."
             },
             {
-                id: 2, title: "Nike Pegasus 40 Running", price: "2,900", condition: "Brand New",
-                property: "Trisara", category: "Fashion", seller: "Nan W. (Reception)", sellerKey: "nan",
-                images: [
-                    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800",
-                    "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800"
-                ],
-                desc: "Brand new Nike Pegasus 40 size US 9. Bought wrong size, never worn. Original box and tags. Black/White colorway."
+                id: 2, title: "Wooden Table 80x80x25", price: "1,633", condition: "Very Good",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Toi (Eng)", sellerKey: "toi-pplz",
+                images: ["assets/products/3.jpg"],
+                desc: "Versatile small wood table — fits side table, plant stand, or laptop desk roles. Dimensions: 80x80x25 cm. Asset code: BRF811449."
             },
             {
-                id: 3, title: "Apple Watch Series 9 45mm", price: "11,500", condition: "Excellent 95%",
-                property: "Praya Palazzo", category: "Electronics", seller: "Witty S. (Kitchen)", sellerKey: "witty",
-                images: [
-                    "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800",
-                    "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=800"
-                ],
-                desc: "Apple Watch Series 9 GPS 45mm Midnight Aluminum. Battery health 100%. Includes charger and 2 extra bands."
+                id: 3, title: "Console", price: "3,107", condition: "Good Condition",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Aom (FO)", sellerKey: "aom-pplz",
+                images: ["assets/products/7.jpg"],
+                desc: "Hallway console table from suite collection. Sturdy frame, natural wood finish. Asset code: FO2015909."
             },
             {
-                id: 4, title: "Sony WH-1000XM5 Headphones", price: "8,900", condition: "Like New 98%",
-                property: "Montara HQ", category: "Electronics", seller: "Aok P. (Admin)", sellerKey: "aok",
-                images: [
-                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800",
-                    "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=800"
-                ],
-                desc: "Sony WH-1000XM5 wireless noise-cancelling headphones. Used about 10 times. Comes with hard case, cables, and original packaging."
+                id: 4, title: "Side Table 60x70x45", price: "1,233", condition: "Like New",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Kai (FB)", sellerKey: "kai-pplz",
+                images: ["assets/products/16.jpg"],
+                desc: "Compact side table, suits guest bedside or lounge corner. Stable build, light cosmetic wear. Dimensions: 60x70x45 cm. Asset code: FO2015917."
             },
             {
-                id: 5, title: "Keychron K2 V2 Keyboard", price: "2,200", condition: "Good",
-                property: "Trisara", category: "Electronics", seller: "Tom R. (Security)", sellerKey: "tom",
-                images: [
-                    "https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=800",
-                    "https://images.unsplash.com/photo-1561112078-7d24e04c3407?q=80&w=800"
-                ],
-                desc: "Keychron K2 V2 wireless mechanical keyboard, Brown switches. RGB backlit, hot-swappable. Light wear on keycaps."
+                id: 5, title: "Working Desk (Top Cashier)", price: "3,793", condition: "Good",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Tu (HK)", sellerKey: "tu-pplz",
+                images: ["assets/products/20.jpg"],
+                desc: "Heavy-duty work desk from cashier station. Wide top surface, perfect for office or studio. Dimensions: 120x190x30.5 cm. Asset code: CXG201001-1."
             },
             {
-                id: 6, title: "Starbucks Reserve Tumbler", price: "950", condition: "Brand New",
-                property: "Montara HQ", category: "Home & Living", seller: "Mint K. (HR)", sellerKey: "mint",
-                images: [
-                    "https://images.unsplash.com/photo-1517254456976-ee8682099819?q=80&w=800",
-                    "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=800"
-                ],
-                desc: "Starbucks Reserve limited edition tumbler 16oz. Brand new in box, never used. Perfect collector's item."
+                id: 6, title: "Display Table", price: "1,500", condition: "Excellent",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Toi (Eng)", sellerKey: "toi-pplz",
+                images: ["assets/products/25.jpg"],
+                desc: "Boutique display table, perfect for retail corner or product showcase. Glass-friendly top surface. Dimensions: 50x50x90 cm. Asset code: FSP950017."
             },
             {
-                id: 7, title: "Nespresso Pixie Coffee Maker", price: "4,500", condition: "Good",
-                property: "Praya Palazzo", category: "Home & Living", seller: "Pat C. (Housekeeping)", sellerKey: "pat",
-                images: [
-                    "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800",
-                    "https://images.unsplash.com/photo-1551030173-122aabc4489c?q=80&w=800"
-                ],
-                desc: "Nespresso Pixie machine in red. Works perfectly, descaled regularly. Includes welcome capsules and milk frother."
+                id: 7, title: "Jewelry Display Stand", price: "650", condition: "Very Good",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Aom (FO)", sellerKey: "aom-pplz",
+                images: ["assets/products/28.jpg"],
+                desc: "Slim vertical display column, originally used for boutique jewelry. Excellent for home gallery or shop. Dimensions: 30x30x122 cm. Asset code: SART2014001-05."
             },
             {
-                id: 8, title: "Kindle Paperwhite 11th Gen", price: "3,800", condition: "Excellent 90%",
-                property: "Trisara", category: "Books", seller: "Don M. (Sales)", sellerKey: "don",
-                images: [
-                    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800",
-                    "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800"
-                ],
-                desc: "Kindle Paperwhite 11th gen 16GB, ad-free. Includes premium leather case. Battery lasts weeks. No scratches."
+                id: 8, title: "Kids Round Plastic Stool", price: "79", condition: "Good Condition",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Kai (FB)", sellerKey: "kai-pplz",
+                images: ["assets/products/32.jpg"],
+                desc: "Lightweight stackable plastic stool from kids' club. Easy to clean, perfect for child seating. Dimensions: 32x32x44 cm. Asset code: REV080003."
             },
             {
-                id: 9, title: "iPad Air M2 11\" Blue 128GB", price: "21,000", condition: "Brand New, Sealed",
-                property: "Montara HQ", category: "Electronics", seller: "Aim L. (Finance)", sellerKey: "aim",
-                images: [
-                    "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=800",
-                    "https://images.unsplash.com/photo-1561154464-82e9adf32764?q=80&w=800"
-                ],
-                desc: "Brand new iPad Air M2 11-inch in Blue, 128GB Wi-Fi. Sealed in original box, won as company prize. 1-year Apple warranty."
+                id: 9, title: "Travertine Side Table (Beach)", price: "1,000", condition: "Like New",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Tu (HK)", sellerKey: "tu-pplz",
+                images: ["assets/products/33.jpg"],
+                desc: "Compact side table, suits guest bedside or lounge corner. Stable build, light cosmetic wear. Dimensions: 45.5x45.5x18.5 cm. Asset code: FB2017001."
             },
             {
-                id: 10, title: "Stanley Quencher 40oz Cup", price: "1,800", condition: "New, Unused",
-                property: "Trisara", category: "Home & Living", seller: "Bee N. (Spa)", sellerKey: "bee",
-                images: [
-                    "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?q=80&w=800",
-                    "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?q=80&w=800"
-                ],
-                desc: "Stanley Quencher H2.0 40oz tumbler in Rose Quartz. Brand new, gift from a friend. Keeps drinks cold for 11 hours."
+                id: 10, title: "Wendy House", price: "2,196", condition: "Good",
+                property: "Praya Palazzo", category: "Furniture", seller: "Khun Toi (Eng)", sellerKey: "toi-pplz",
+                images: ["assets/products/54.jpg"],
+                desc: "Children's wooden playhouse from kids' activity area. Disassembled for transport, all parts included. Asset code: REC2015011."
             },
             {
-                id: 11, title: "Levi's 501 Original Jeans", price: "1,200", condition: "Excellent 95%",
-                property: "Praya Palazzo", category: "Fashion", seller: "Joy A. (F&B)", sellerKey: "joy",
-                images: [
-                    "https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800"
-                ],
-                desc: "Levi's 501 jeans, dark wash, size W32 L32. Worn maybe 3 times. Doesn't fit me anymore."
+                id: 11, title: "Restaurant Dining Table", price: "3,600", condition: "Excellent",
+                property: "Trisara", category: "Furniture", seller: "Khun Mali (FB)", sellerKey: "mali-tsr",
+                images: ["assets/products/55.jpg"],
+                desc: "Square dining table from restaurant set. Solid hardwood top, seats 4. Some surface patina from use. Dimensions: 120x120x76 cm. Asset code: FLB601001."
             },
             {
-                id: 12, title: "MacBook Air M2 13\" Silver", price: "29,900", condition: "Like New 99%",
-                property: "Montara HQ", category: "Electronics", seller: "Pisak T. (IT)", sellerKey: "pisak",
-                images: [
-                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800",
-                    "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800"
-                ],
-                desc: "MacBook Air M2 13-inch, 8GB RAM, 256GB SSD, Silver. Cycle count under 50. AppleCare+ until 2027."
+                id: 12, title: "Wooden Dining Table", price: "3,600", condition: "Very Good",
+                property: "Trisara", category: "Furniture", seller: "Khun Kit (Asset)", sellerKey: "kit-tsr",
+                images: ["assets/products/56.jpg"],
+                desc: "Solid wood dining table from F&B outlet. Light to moderate wear from service use. Asset code: FLB601002."
             },
             {
-                id: 13, title: "Yoga Mat Premium 6mm", price: "1,400", condition: "Like New 98%",
-                property: "Tri Vananda", category: "Home & Living", seller: "Ploy K. (Wellness)", sellerKey: "ploy-tvnd",
-                images: [
-                    "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=800",
-                    "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800"
-                ],
-                desc: "Premium TPE yoga mat, 6mm thick, eco-friendly. Used a few times during retreats. Comes with carrying strap."
+                id: 13, title: "Rattan Single Armchair Sofa", price: "1,122", condition: "Good Condition",
+                property: "Trisara", category: "Furniture", seller: "Khun Joy (Reception)", sellerKey: "joy-tsr",
+                images: ["assets/products/63.jpg"],
+                desc: "Synthetic rattan single armchair, originally beach pool deck. Weather-resistant, cushion sold separately. Dimensions: 56x51x74 cm. Asset code: FB2016025."
             },
             {
-                id: 14, title: "Linen Resort Shirt M", price: "1,650", condition: "Brand New",
-                property: "Tri Vananda", category: "Fashion", seller: "Tarn N. (Reception)", sellerKey: "tarn-tvnd",
-                images: [
-                    "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800",
-                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800"
-                ],
-                desc: "Natural linen short-sleeve shirt in cream/beige tone, size M. Brand new with tags. Perfect for resort/wellness wear."
+                id: 14, title: "Armchair with Cushion", price: "1,620", condition: "Like New",
+                property: "Trisara", category: "Furniture", seller: "Khun Pong (Eng)", sellerKey: "pong-tsr",
+                images: ["assets/products/65.jpg"],
+                desc: "Comfortable armchair with original cushion. Ideal for reading nook or lobby seating. Dimensions: 60x77x79 cm. Asset code: FO2015929."
             },
             {
-                id: 15, title: "Ceramic Tea Set (6pc)", price: "2,200", condition: "Like New 99%",
-                property: "Tri Vananda", category: "Home & Living", seller: "Khun Mali (F&B)", sellerKey: "mali-tvnd",
-                images: [
-                    "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800",
-                    "https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=800"
-                ],
-                desc: "Handmade Thai ceramic tea set — 1 teapot + 5 cups. Earth tone, minimal design. Used twice for tasting event."
+                id: 15, title: "Armchair with Cushion (set)", price: "1,620", condition: "Good",
+                property: "Trisara", category: "Furniture", seller: "Khun Mali (FB)", sellerKey: "mali-tsr",
+                images: ["assets/products/66.jpg"],
+                desc: "Comfortable armchair with original cushion. Ideal for reading nook or lobby seating. Asset code: FO2015930."
             },
             {
-                id: 16, title: "Plant-Based Cookbook", price: "650", condition: "Excellent 95%",
-                property: "Tri Vananda", category: "Books", seller: "Chef Dao (Kitchen)", sellerKey: "dao-tvnd",
-                images: [
-                    "https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=800"
-                ],
-                desc: "Comprehensive plant-based cookbook with 200+ recipes. English edition, hardcover. Light wear on jacket only."
+                id: 16, title: "Staff Chair with Cushion", price: "1,548", condition: "Excellent",
+                property: "Trisara", category: "Furniture", seller: "Khun Kit (Asset)", sellerKey: "kit-tsr",
+                images: ["assets/products/70.jpg"],
+                desc: "Tall staff chair with backrest and cushion. Great as desk chair at home office. Dimensions: 45x45x90 cm. Asset code: FO2015937."
+            },
+            {
+                id: 17, title: "Staff Chair (set)", price: "1,548", condition: "Very Good",
+                property: "Trisara", category: "Furniture", seller: "Khun Joy (Reception)", sellerKey: "joy-tsr",
+                images: ["assets/products/71.jpg"],
+                desc: "Pre-owned hotel asset in good condition. Inspected and ready for resale to staff. Pickup at warehouse. Asset code: FO2015938."
+            },
+            {
+                id: 18, title: "Display Cabinet", price: "2,100", condition: "Good Condition",
+                property: "Trisara", category: "Furniture", seller: "Khun Pong (Eng)", sellerKey: "pong-tsr",
+                images: ["assets/products/79.jpg"],
+                desc: "Tall wooden display cabinet with glass shelving. Ideal for retail, reception, or curated home display. Dimensions: 140x50x74 cm. Asset code: FLB605008."
+            },
+            {
+                id: 19, title: "Side Table 60x70x44", price: "685", condition: "Like New",
+                property: "Trisara", category: "Furniture", seller: "Khun Mali (FB)", sellerKey: "mali-tsr",
+                images: ["assets/products/83.jpg"],
+                desc: "Compact side table, suits guest bedside or lounge corner. Stable build, light cosmetic wear. Dimensions: 60x70x44 cm. Asset code: FO2015913."
+            },
+            {
+                id: 20, title: "Sofa with Cushion (Long)", price: "5,550", condition: "Good",
+                property: "Trisara", category: "Furniture", seller: "Khun Kit (Asset)", sellerKey: "kit-tsr",
+                images: ["assets/products/92.jpg"],
+                desc: "Long sofa with original cushion set. Lightly worn, ideal for living room or entertainment area. Dimensions: 230x89x29 cm. Asset code: FO2015925."
             }
         ];
 
         const chats = [
             { id: 1, name: "Joy A. (Trisara)", key: "joy", time: "10:45", unread: 2, last: "Hi! Could you send more photos of the iPhone please?", productId: 1 },
-            { id: 2, name: "Pisak T. (IT)", key: "pisak", time: "09:12", unread: 0, last: "Thanks! I'll meet you at HQ lobby tomorrow at 2pm.", productId: 12 },
-            { id: 3, name: "Nan W. (Reception)", key: "nan", time: "Yesterday", unread: 1, last: "The shoes are still available?", productId: 2 },
-            { id: 4, name: "Witty S. (Kitchen)", key: "witty", time: "Yesterday", unread: 0, last: "Perfect, payment sent via PromptPay.", productId: 3 },
-            { id: 5, name: "Mint K. (HR)", key: "mint", time: "Mon", unread: 0, last: "Sorry, just sold to someone else!", productId: 6 },
-            { id: 6, name: "Aok P. (Admin)", key: "aok", time: "Mon", unread: 0, last: "Can you do 8,500?", productId: 4 },
-            { id: 7, name: "Don M. (Sales)", key: "don", time: "Sun", unread: 0, last: "It's the 16GB version, ad-free.", productId: 8 }
+            { id: 2, name: "Pisak T. (IT)", key: "pisak", time: "09:12", unread: 0, last: "Thanks! I'll meet you at HQ lobby tomorrow at 2pm.", productId: 11 },
+            { id: 3, name: "Nan W. (Reception)", key: "nan", time: "Yesterday", unread: 1, last: "The shoes are still available?", productId: 14 },
+            { id: 4, name: "Witty S. (Kitchen)", key: "witty", time: "Yesterday", unread: 0, last: "Perfect, payment sent via PromptPay.", productId: 18 },
+            { id: 5, name: "Mint K. (HR)", key: "mint", time: "Mon", unread: 0, last: "Sorry, just sold to someone else!", productId: 5 },
+            { id: 6, name: "Aok P. (Admin)", key: "aok", time: "Mon", unread: 0, last: "Can you do 8,500?", productId: 13 },
+            { id: 7, name: "Don M. (Sales)", key: "don", time: "Sun", unread: 0, last: "It's the 16GB version, ad-free.", productId: 6 }
         ];
 
         const notifications = [
@@ -592,9 +569,9 @@
             { type: "verified", icon: "fa-shield-halved", color: "bg-slate-100 text-slate-600", title: "Verified Staff badge", desc: "Your staff verification is confirmed", time: "1 week ago", unread: false }
         ];
 
-        const savedItems = [1, 3, 4, 7, 9, 11];
+        const savedItems = [1, 5, 7, 11, 14, 18];
 
-        const myActiveListings = [1, 12, 4];
+        const myActiveListings = [1, 5, 11];
 
         const reviews = [
             { name: "Mint K. (HR)", avatar: "mint", rating: 5, text: "Great seller, fast response and item exactly as described!", time: "3 days ago" },
@@ -627,10 +604,7 @@
             { label: 'PPLZ', full: 'Praya Palazzo', icon: 'fa-landmark', type: 'property', theme: 'pplz' },
             { label: 'MMC', full: 'Montara HQ', icon: 'fa-building', type: 'property', theme: 'mmc' },
             { label: 'TVND', full: 'Tri Vananda', icon: 'fa-leaf', type: 'property', theme: 'tvnd' },
-            { label: 'Electronics', icon: 'fa-laptop', type: 'category' },
-            { label: 'Fashion', icon: 'fa-shirt', type: 'category' },
-            { label: 'Home & Living', icon: 'fa-house', type: 'category' },
-            { label: 'Books', icon: 'fa-book', type: 'category' }
+            { label: 'Furniture', icon: 'fa-chair', type: 'category' }
         ];
 
         const propertyShort = { 'Trisara': 'TSR', 'Praya Palazzo': 'PPLZ', 'Montara HQ': 'MMC', 'Tri Vananda': 'TVND' };
