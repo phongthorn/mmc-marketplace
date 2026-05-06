@@ -1,0 +1,5 @@
+# Local Claude Code workspace
+.claude/
+
+# Backup files
+*.bak
