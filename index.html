@@ -15,6 +15,10 @@
                         montara: '#00377A',
                         montaraGold: '#C5A059',
                         surface: '#F8FAFC',
+                        tvnd: '#213b2e',
+                        tvndOrange: '#cc5747',
+                        tvndStone: '#bab9af',
+                        tvndCream: '#efeae5',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,12 +33,31 @@
         .page-content { display: none; }
         .page-content.active { display: block; animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .product-gallery-dot.active { background-color: #00377A; width: 24px; }
-        .chat-bubble-me { background: #00377A; color: white; border-radius: 18px 18px 4px 18px; }
+
+        /* Theme tokens — switched by data-theme on body */
+        body { --brand: #00377A; --brand-soft: rgba(0,55,122,0.10); --accent: #C5A059; --bg-surface: #F8FAFC; }
+        body[data-theme="tvnd"] { --brand: #213b2e; --brand-soft: rgba(33,59,46,0.08); --accent: #cc5747; --bg-surface: #efeae5; }
+
+        body { background-color: var(--bg-surface); transition: background-color 0.4s ease; }
+        .bg-brand { background-color: var(--brand); }
+        .text-brand { color: var(--brand); }
+        .border-brand { border-color: var(--brand); }
+        .bg-brand-soft { background-color: var(--brand-soft); }
+        .ring-brand { --tw-ring-color: var(--brand); }
+        .shadow-brand { box-shadow: 0 10px 25px -5px var(--brand-soft); }
+
+        .product-gallery-dot.active { background-color: var(--brand); width: 24px; }
+        .chat-bubble-me { background: var(--brand); color: white; border-radius: 18px 18px 4px 18px; }
         .chat-bubble-them { background: #F1F5F9; color: #0F172A; border-radius: 18px 18px 18px 4px; }
-        .tab-btn.active { color: #00377A; border-color: #00377A; }
+        .tab-btn.active { color: var(--brand); border-color: var(--brand); }
+
+        /* Logo color by theme */
         .montara-logo {
             filter: brightness(0) saturate(100%) invert(15%) sepia(64%) saturate(2845%) hue-rotate(206deg) brightness(94%) contrast(101%);
+            transition: filter 0.4s ease;
+        }
+        body[data-theme="tvnd"] .montara-logo {
+            filter: brightness(0) saturate(100%) invert(18%) sepia(15%) saturate(900%) hue-rotate(95deg) brightness(95%) contrast(90%);
         }
     </style>
 </head>
@@ -64,7 +87,7 @@
             <!-- Search & Filter -->
             <div class="relative mb-6">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" placeholder="Search items from staff..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-montara/10 outline-none">
+                <input type="text" placeholder="Search items from staff..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-brand outline-none">
             </div>
 
             <!-- Category Pills -->
@@ -73,7 +96,7 @@
             <!-- Banner -->
             <div class="rounded-3xl overflow-hidden mb-8 relative aspect-[16/7]">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-montara/80 to-transparent p-5 flex flex-col justify-end text-white">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-5 flex flex-col justify-end text-white">
                     <p class="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Exclusive for Staff</p>
                     <h2 class="text-xl font-bold">Quality Marketplace for Hotel Staff</h2>
                 </div>
@@ -140,7 +163,7 @@
                 <img id="chat-item-img" src="" class="w-12 h-12 rounded-xl object-cover">
                 <div class="flex-1 min-w-0">
                     <p id="chat-item-title" class="font-bold text-xs truncate">Item</p>
-                    <p id="chat-item-price" class="text-montara font-black text-sm">฿0</p>
+                    <p id="chat-item-price" class="text-brand font-black text-sm">฿0</p>
                 </div>
                 <span class="text-[9px] bg-emerald-100 text-emerald-600 px-2 py-1 rounded-full font-bold">Available</span>
             </div>
@@ -154,7 +177,7 @@
             <div class="sticky bottom-20 bg-white p-3 border-t border-slate-100 flex items-center gap-2 max-w-md mx-auto">
                 <button class="w-10 h-10 bg-slate-50 rounded-full text-slate-500 flex-shrink-0"><i class="fa-solid fa-plus"></i></button>
                 <input type="text" placeholder="Type a message..." class="flex-1 px-4 py-2.5 bg-slate-50 rounded-full text-sm outline-none">
-                <button class="w-10 h-10 bg-montara rounded-full text-white flex-shrink-0"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+                <button class="w-10 h-10 bg-brand rounded-full text-white flex-shrink-0"><i class="fa-solid fa-paper-plane text-sm"></i></button>
             </div>
         </div>
 
@@ -162,7 +185,7 @@
         <div id="page-notifications" class="page-content p-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Notifications</h2>
-                <button class="text-xs text-montara font-bold">Mark all read</button>
+                <button class="text-xs text-brand font-bold">Mark all read</button>
             </div>
             <div class="space-y-3" id="notif-list">
                 <!-- Injected -->
@@ -206,7 +229,7 @@
                     </select>
                     <textarea placeholder="Describe your item in detail..." class="w-full p-4 bg-slate-50 rounded-xl outline-none h-32"></textarea>
                 </div>
-                <button class="w-full py-4 bg-montara text-white rounded-2xl font-bold shadow-lg shadow-montara/30">Post Listing</button>
+                <button class="w-full py-4 bg-brand text-white rounded-2xl font-bold shadow-brand">Post Listing</button>
             </div>
         </div>
 
@@ -225,15 +248,15 @@
 
             <div class="grid grid-cols-3 gap-3 mb-8">
                 <div class="bg-slate-50 p-4 rounded-2xl text-center">
-                    <p class="text-xl font-bold text-montara">12</p>
+                    <p class="text-xl font-bold text-brand">12</p>
                     <p class="text-[9px] text-slate-400 font-bold uppercase">Listings</p>
                 </div>
                 <div class="bg-slate-50 p-4 rounded-2xl text-center">
-                    <p class="text-xl font-bold text-montara">45</p>
+                    <p class="text-xl font-bold text-brand">45</p>
                     <p class="text-[9px] text-slate-400 font-bold uppercase">Sold</p>
                 </div>
                 <div class="bg-slate-50 p-4 rounded-2xl text-center">
-                    <p class="text-xl font-bold text-montaraGold">4.9<i class="fa-solid fa-star text-xs ml-0.5"></i></p>
+                    <p class="text-xl font-bold text-brandGold">4.9<i class="fa-solid fa-star text-xs ml-0.5"></i></p>
                     <p class="text-[9px] text-slate-400 font-bold uppercase">Rating</p>
                 </div>
             </div>
@@ -276,12 +299,12 @@
 
             <!-- Stats Overview -->
             <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="bg-gradient-to-br from-montara to-blue-900 p-5 rounded-3xl text-white">
+                <div class="bg-brand p-5 rounded-3xl text-white">
                     <i class="fa-solid fa-users text-2xl opacity-50 mb-3"></i>
                     <p class="text-2xl font-black">324</p>
                     <p class="text-[10px] font-bold uppercase opacity-80 tracking-wider">Active Staff</p>
                 </div>
-                <div class="bg-gradient-to-br from-montaraGold to-amber-700 p-5 rounded-3xl text-white">
+                <div class="p-5 rounded-3xl text-white" style="background-color: var(--accent);">
                     <i class="fa-solid fa-tag text-2xl opacity-50 mb-3"></i>
                     <p class="text-2xl font-black">186</p>
                     <p class="text-[10px] font-bold uppercase opacity-80 tracking-wider">Live Listings</p>
@@ -328,11 +351,11 @@
             <div class="p-6">
                 <div class="flex justify-between items-start mb-4">
                     <div class="flex-1">
-                        <span id="modal-property" class="inline-block px-3 py-1 rounded-full bg-montara/10 text-montara text-[10px] font-bold uppercase tracking-widest mb-2">PROPERTY</span>
+                        <span id="modal-property" class="inline-block px-3 py-1 rounded-full bg-brand-soft text-brand text-[10px] font-bold uppercase tracking-widest mb-2">PROPERTY</span>
                         <h2 id="modal-title" class="text-3xl font-bold leading-tight">Title</h2>
                     </div>
                     <div class="text-right">
-                        <p id="modal-price" class="text-2xl font-bold text-montara">฿0</p>
+                        <p id="modal-price" class="text-2xl font-bold text-brand">฿0</p>
                         <p id="modal-condition" class="text-xs font-bold text-emerald-500 mt-1">98% New</p>
                     </div>
                 </div>
@@ -343,7 +366,7 @@
                         <p class="font-bold text-sm" id="modal-seller-name">Seller</p>
                         <p class="text-xs text-slate-400 font-medium">Rating: 4.9/5 · 32 reviews</p>
                     </div>
-                    <button class="ml-auto text-montara font-bold text-xs underline">View Profile</button>
+                    <button class="ml-auto text-brand font-bold text-xs underline">View Profile</button>
                 </div>
 
                 <div class="space-y-4">
@@ -355,10 +378,10 @@
             </div>
 
             <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-100 max-w-md mx-auto flex gap-3 z-30">
-                <button onclick="openChatFromProduct()" class="flex-1 py-4 px-6 border-2 border-montara text-montara rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2">
+                <button onclick="openChatFromProduct()" class="flex-1 py-4 px-6 border-2 border-brand text-brand rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-message"></i> Chat Seller
                 </button>
-                <button onclick="confirmBooking()" class="flex-[1.5] py-4 px-6 bg-montara text-white rounded-2xl font-bold shadow-xl shadow-montara/20 active:scale-95 transition-all flex items-center justify-center gap-2">
+                <button onclick="confirmBooking()" class="flex-[1.5] py-4 px-6 bg-brand text-white rounded-2xl font-bold shadow-brand active:scale-95 transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-calendar-check"></i> Reserve Item
                 </button>
             </div>
@@ -367,7 +390,7 @@
 
     <!-- BOTTOM NAV -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-slate-100 flex justify-around items-center px-2 py-3 z-[60] max-w-md mx-auto shadow-[0_-5px_15px_-5px_rgba(0,0,0,0.05)] rounded-t-[32px]">
-        <button onclick="navigateTo('home')" class="nav-btn flex flex-col items-center gap-1 active text-montara px-4 py-1">
+        <button onclick="navigateTo('home')" class="nav-btn flex flex-col items-center gap-1 active text-brand px-4 py-1">
             <i class="fa-solid fa-shop text-lg"></i>
             <span class="text-[9px] font-bold uppercase tracking-tighter">Market</span>
         </button>
@@ -376,7 +399,7 @@
             <span class="text-[9px] font-bold uppercase tracking-tighter">Chat</span>
         </button>
         <button onclick="navigateTo('sell')" class="flex flex-col items-center -translate-y-6">
-            <div class="w-14 h-14 bg-montara text-white rounded-2xl flex items-center justify-center shadow-xl shadow-montara/30 ring-4 ring-white">
+            <div class="w-14 h-14 bg-brand text-white rounded-2xl flex items-center justify-center shadow-brand ring-4 ring-white">
                 <i class="fa-solid fa-plus text-2xl"></i>
             </div>
         </button>
@@ -499,6 +522,41 @@
                     "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800"
                 ],
                 desc: "MacBook Air M2 13-inch, 8GB RAM, 256GB SSD, Silver. Cycle count under 50. AppleCare+ until 2027."
+            },
+            {
+                id: 13, title: "Yoga Mat Premium 6mm", price: "1,400", condition: "Like New 98%",
+                property: "Tri Vananda", category: "Home & Living", seller: "Ploy K. (Wellness)", sellerKey: "ploy-tvnd",
+                images: [
+                    "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=800",
+                    "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800"
+                ],
+                desc: "Premium TPE yoga mat, 6mm thick, eco-friendly. Used a few times during retreats. Comes with carrying strap."
+            },
+            {
+                id: 14, title: "Linen Resort Shirt M", price: "1,650", condition: "Brand New",
+                property: "Tri Vananda", category: "Fashion", seller: "Tarn N. (Reception)", sellerKey: "tarn-tvnd",
+                images: [
+                    "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800"
+                ],
+                desc: "Natural linen short-sleeve shirt in cream/beige tone, size M. Brand new with tags. Perfect for resort/wellness wear."
+            },
+            {
+                id: 15, title: "Ceramic Tea Set (6pc)", price: "2,200", condition: "Like New 99%",
+                property: "Tri Vananda", category: "Home & Living", seller: "Khun Mali (F&B)", sellerKey: "mali-tvnd",
+                images: [
+                    "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800",
+                    "https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=800"
+                ],
+                desc: "Handmade Thai ceramic tea set — 1 teapot + 5 cups. Earth tone, minimal design. Used twice for tasting event."
+            },
+            {
+                id: 16, title: "Plant-Based Cookbook", price: "650", condition: "Excellent 95%",
+                property: "Tri Vananda", category: "Books", seller: "Chef Dao (Kitchen)", sellerKey: "dao-tvnd",
+                images: [
+                    "https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=800"
+                ],
+                desc: "Comprehensive plant-based cookbook with 200+ recipes. English edition, hardcover. Light wear on jacket only."
             }
         ];
 
@@ -553,14 +611,17 @@
 
         const categories = [
             { label: 'All', icon: 'fa-grip', type: 'all' },
-            { label: 'Trisara', icon: 'fa-building', type: 'property' },
-            { label: 'Praya Palazzo', icon: 'fa-building', type: 'property' },
-            { label: 'Montara HQ', icon: 'fa-building', type: 'property' },
+            { label: 'TSR', full: 'Trisara', icon: 'fa-building', type: 'property', theme: 'mmc' },
+            { label: 'PPLZ', full: 'Praya Palazzo', icon: 'fa-building', type: 'property', theme: 'mmc' },
+            { label: 'MMC', full: 'Montara HQ', icon: 'fa-building', type: 'property', theme: 'mmc' },
+            { label: 'TVND', full: 'Tri Vananda', icon: 'fa-leaf', type: 'property', theme: 'tvnd' },
             { label: 'Electronics', icon: 'fa-laptop', type: 'category' },
             { label: 'Fashion', icon: 'fa-shirt', type: 'category' },
             { label: 'Home & Living', icon: 'fa-house', type: 'category' },
             { label: 'Books', icon: 'fa-book', type: 'category' }
         ];
+
+        const propertyShort = { 'Trisara': 'TSR', 'Praya Palazzo': 'PPLZ', 'Montara HQ': 'MMC', 'Tri Vananda': 'TVND' };
 
         function init() {
             renderCategories();
@@ -584,7 +645,7 @@
             const cardBtn = document.getElementById('view-card');
             const listBtn = document.getElementById('view-list');
             if (!cardBtn || !listBtn) return;
-            const activeCls = ['bg-white', 'text-montara', 'shadow-sm'];
+            const activeCls = ['bg-white', 'text-brand', 'shadow-sm'];
             const idleCls = ['text-slate-400'];
             [cardBtn, listBtn].forEach(b => {
                 b.classList.remove(...activeCls, ...idleCls);
@@ -607,14 +668,14 @@
                     <div class="flex-1 min-w-0 flex flex-col justify-between py-1">
                         <div>
                             <div class="flex items-center gap-1.5 mb-1">
-                                <span class="px-2 py-0.5 bg-montara/10 text-montara text-[8px] font-black uppercase rounded-md">${p.property}</span>
+                                <span class="px-2 py-0.5 bg-brand-soft text-brand text-[9px] font-black uppercase rounded-md tracking-wider">${propertyShort[p.property] || p.property}</span>
                                 <span class="text-[8px] text-slate-400 font-bold uppercase">${p.category || ''}</span>
                             </div>
                             <h3 class="text-sm font-bold leading-tight mb-1 truncate">${p.title}</h3>
                             <p class="text-[10px] text-slate-400 truncate"><i class="fa-solid fa-user text-[8px] mr-1"></i> ${p.seller}</p>
                         </div>
                         <div class="flex justify-between items-end">
-                            <p class="text-montara font-black text-base">฿${p.price}</p>
+                            <p class="text-brand font-black text-base">฿${p.price}</p>
                             <span class="text-[9px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">${p.condition}</span>
                         </div>
                     </div>
@@ -628,7 +689,7 @@
                 const active = c.label === activeCategory;
                 return `
                     <button onclick="selectCategory('${c.label.replace(/'/g, "\\'")}')"
-                        class="px-4 py-2 rounded-full text-xs whitespace-nowrap transition-all flex items-center gap-1.5 ${active ? 'bg-montara text-white font-bold shadow-md shadow-montara/20' : 'bg-slate-50 text-slate-600 font-semibold hover:bg-slate-100'}">
+                        class="px-4 py-2 rounded-full text-xs whitespace-nowrap transition-all flex items-center gap-1.5 ${active ? 'bg-brand text-white font-bold shadow-brand' : 'bg-slate-50 text-slate-600 font-semibold hover:bg-slate-100'}">
                         <i class="fa-solid ${c.icon} text-[10px]"></i> ${c.label}
                     </button>
                 `;
@@ -637,6 +698,9 @@
 
         function selectCategory(label) {
             activeCategory = label;
+            const cat = categories.find(c => c.label === label);
+            const theme = cat && cat.theme === 'tvnd' ? 'tvnd' : 'mmc';
+            document.body.setAttribute('data-theme', theme === 'tvnd' ? 'tvnd' : '');
             renderCategories();
             renderProducts();
         }
@@ -645,7 +709,7 @@
             if (activeCategory === 'All') return products;
             const cat = categories.find(c => c.label === activeCategory);
             if (!cat) return products;
-            if (cat.type === 'property') return products.filter(p => p.property === activeCategory);
+            if (cat.type === 'property') return products.filter(p => p.property === cat.full);
             if (cat.type === 'category') return products.filter(p => p.category === activeCategory);
             return products;
         }
@@ -679,13 +743,13 @@
                 <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm active:scale-95 transition-transform cursor-pointer" onclick="openProduct(${p.id})">
                     <div class="aspect-square relative overflow-hidden bg-slate-50">
                         <img src="${p.images[0]}" class="w-full h-full object-cover" loading="lazy">
-                        <span class="absolute top-2 left-2 px-2 py-0.5 bg-montara/80 backdrop-blur-sm text-white text-[8px] font-black uppercase rounded-lg">
-                            ${p.property}
+                        <span class="absolute top-2 left-2 px-2 py-0.5 bg-brand/85 backdrop-blur-sm text-white text-[9px] font-black uppercase rounded-lg tracking-wider">
+                            ${propertyShort[p.property] || p.property}
                         </span>
                     </div>
                     <div class="p-3">
                         <h3 class="text-xs font-bold truncate mb-1">${p.title}</h3>
-                        <p class="text-montara font-black text-sm mb-1">฿${p.price}</p>
+                        <p class="text-brand font-black text-sm mb-1">฿${p.price}</p>
                         <span class="text-[9px] text-slate-400 font-bold uppercase">${p.condition}</span>
                     </div>
                 </div>
@@ -707,7 +771,7 @@
                         </div>
                         <div class="flex justify-between items-center gap-2">
                             <p class="text-xs text-slate-500 truncate">${c.last}</p>
-                            ${c.unread > 0 ? `<span class="bg-montara text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex-shrink-0">${c.unread}</span>` : ''}
+                            ${c.unread > 0 ? `<span class="bg-brand text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex-shrink-0">${c.unread}</span>` : ''}
                         </div>
                     </div>
                 </div>
@@ -793,7 +857,7 @@
                                 <p class="text-xs text-slate-400">Sold to ${p.seller}</p>
                             </div>
                             <div class="text-right">
-                                <p class="text-montara font-black text-sm">฿${p.price}</p>
+                                <p class="text-brand font-black text-sm">฿${p.price}</p>
                                 <span class="text-[9px] bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded-full font-bold">SOLD</span>
                             </div>
                         </div>
@@ -842,7 +906,7 @@
                             <p class="font-bold text-sm truncate">${item.title}</p>
                             <p class="text-xs text-slate-500">by ${item.seller}</p>
                         </div>
-                        <p class="text-montara font-black text-sm flex-shrink-0 ml-2">฿${item.price}</p>
+                        <p class="text-brand font-black text-sm flex-shrink-0 ml-2">฿${item.price}</p>
                     </div>
                     <p class="text-xs text-amber-700 mb-3"><i class="fa-solid fa-triangle-exclamation mr-1"></i> ${item.reason}</p>
                     <div class="flex gap-2">
@@ -874,9 +938,9 @@
             const page = document.getElementById('page-' + pageId);
             if (page) page.classList.add('active');
 
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.replace('text-montara', 'text-slate-400'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.replace('text-brand', 'text-slate-400'));
             const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.onclick && b.onclick.toString().includes(`'${pageId}'`));
-            if (activeBtn) activeBtn.classList.replace('text-slate-400', 'text-montara');
+            if (activeBtn) activeBtn.classList.replace('text-slate-400', 'text-brand');
 
             window.scrollTo(0, 0);
         }
@@ -889,7 +953,7 @@
             document.getElementById('modal-title').innerText = product.title;
             document.getElementById('modal-price').innerText = '฿' + product.price;
             document.getElementById('modal-condition').innerText = product.condition;
-            document.getElementById('modal-property').innerText = product.property;
+            document.getElementById('modal-property').innerText = propertyShort[product.property] || product.property;
             document.getElementById('modal-seller-name').innerText = product.seller;
             document.getElementById('modal-seller-img').src = `https://i.pravatar.cc/150?u=${product.sellerKey}`;
             document.getElementById('modal-desc').innerText = product.desc;
