@@ -300,6 +300,69 @@
             </div>
         </div>
 
+        <!-- SELLER PROFILE PAGE -->
+        <div id="page-seller" class="page-content">
+            <!-- Cover -->
+            <div class="relative">
+                <div class="h-32 bg-brand"></div>
+                <button onclick="closeSellerProfile()" class="absolute top-4 left-4 w-9 h-9 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-slate-700 shadow-md">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="absolute -bottom-12 left-1/2 -translate-x-1/2">
+                    <img id="seller-avatar" src="" class="w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover bg-slate-200">
+                </div>
+            </div>
+
+            <!-- Identity -->
+            <div class="pt-16 px-6 pb-6 text-center">
+                <h2 id="seller-name" class="text-xl font-bold">Seller Name</h2>
+                <p id="seller-role" class="text-xs text-slate-400 mt-1">Department · Property</p>
+                <div class="flex justify-center gap-2 mt-3 flex-wrap">
+                    <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-bold italic">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Verified Staff
+                    </span>
+                    <span id="seller-tenure" class="text-[10px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-bold">
+                        <i class="fa-solid fa-clock mr-1"></i> Member since 2022
+                    </span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-3 px-6 mb-6">
+                <div class="bg-slate-50 p-3 rounded-2xl text-center">
+                    <p id="seller-listing-count" class="text-lg font-black text-brand">0</p>
+                    <p class="text-[9px] text-slate-400 font-bold uppercase">Listings</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl text-center">
+                    <p id="seller-sold-count" class="text-lg font-black text-brand">0</p>
+                    <p class="text-[9px] text-slate-400 font-bold uppercase">Sold</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl text-center">
+                    <p id="seller-rating" class="text-lg font-black text-brand">4.9<i class="fa-solid fa-star text-[10px] ml-0.5"></i></p>
+                    <p class="text-[9px] text-slate-400 font-bold uppercase">Rating</p>
+                </div>
+            </div>
+
+            <!-- Action -->
+            <div class="px-6 mb-6 flex gap-2">
+                <button onclick="contactSeller()" class="flex-1 py-3 bg-brand text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-message"></i> Message
+                </button>
+                <button class="px-4 py-3 border-2 border-brand text-brand rounded-2xl font-bold text-sm">
+                    <i class="fa-regular fa-bookmark"></i>
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex border-b border-slate-100 px-6">
+                <button id="seller-tab-active" class="tab-btn active flex-1 py-3 text-sm font-bold border-b-2" onclick="switchSellerTab('active', this)">Active</button>
+                <button id="seller-tab-reviews" class="tab-btn flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-slate-400" onclick="switchSellerTab('reviews', this)">Reviews</button>
+                <button id="seller-tab-about" class="tab-btn flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-slate-400" onclick="switchSellerTab('about', this)">About</button>
+            </div>
+
+            <div id="seller-tab-content" class="px-6 py-4"></div>
+        </div>
+
         <!-- ADMIN PANEL PAGE -->
         <div id="page-admin" class="page-content p-4">
             <div class="flex items-center gap-3 mb-6">
@@ -378,7 +441,7 @@
                         <p class="font-bold text-sm" id="modal-seller-name">Seller</p>
                         <p class="text-xs text-slate-400 font-medium">Rating: 4.9/5 · 32 reviews</p>
                     </div>
-                    <button class="ml-auto text-brand font-bold text-xs underline">View Profile</button>
+                    <button onclick="openSellerProfile()" class="ml-auto text-brand font-bold text-xs underline">View Profile</button>
                 </div>
 
                 <div class="space-y-4">
@@ -991,6 +1054,145 @@
             } else {
                 alert(`Starting new chat with ${pendingChatProduct.seller}\nAbout: ${pendingChatProduct.title}`);
             }
+        }
+
+        // Seller profile state
+        let currentSeller = null;
+        let modalWasOpenForSeller = false;
+
+        const sellerInfo = {
+            'kai-pplz':  { tenure: '2021', dept: 'F&B', property: 'Praya Palazzo',  rating: 4.9, sold: 28 },
+            'tu-pplz':   { tenure: '2019', dept: 'Housekeeping', property: 'Praya Palazzo', rating: 5.0, sold: 41 },
+            'toi-pplz':  { tenure: '2020', dept: 'Engineering', property: 'Praya Palazzo', rating: 4.8, sold: 19 },
+            'aom-pplz':  { tenure: '2022', dept: 'Front Office', property: 'Praya Palazzo', rating: 4.7, sold: 12 },
+            'kit-tsr':   { tenure: '2018', dept: 'Asset Management', property: 'Trisara', rating: 5.0, sold: 67 },
+            'joy-tsr':   { tenure: '2021', dept: 'Reception', property: 'Trisara', rating: 4.9, sold: 22 },
+            'pong-tsr':  { tenure: '2020', dept: 'Engineering', property: 'Trisara', rating: 4.8, sold: 15 },
+            'mali-tsr':  { tenure: '2019', dept: 'Food & Beverage', property: 'Trisara', rating: 4.9, sold: 33 },
+        };
+
+        const sellerReviews = {
+            default: [
+                { name: 'Mint K. (HR)', avatar: 'mint', rating: 5, text: 'Item exactly as described. Met at warehouse, smooth pickup.', time: '3 days ago' },
+                { name: 'Witty S. (Kitchen)', avatar: 'witty', rating: 5, text: 'Great seller, replied quickly and the price was fair.', time: '1 week ago' },
+                { name: 'Don M. (Sales)', avatar: 'don', rating: 4, text: 'Good condition. Slight delay in coordinating pickup but fine overall.', time: '2 weeks ago' },
+                { name: 'Bee N. (Spa)', avatar: 'bee', rating: 5, text: 'Trusted seller. Will buy again.', time: '1 month ago' }
+            ]
+        };
+
+        function openSellerProfile() {
+            if (!pendingChatProduct) return;
+            const product = pendingChatProduct;
+            currentSeller = { key: product.sellerKey, name: product.seller, property: product.property };
+            modalWasOpenForSeller = !document.getElementById('product-modal').classList.contains('hidden');
+            closeProduct();
+            renderSellerProfile();
+            navigateTo('seller');
+        }
+
+        function closeSellerProfile() {
+            navigateTo('home');
+        }
+
+        function renderSellerProfile() {
+            if (!currentSeller) return;
+            const info = sellerInfo[currentSeller.key] || { tenure: '2022', dept: 'Staff', property: currentSeller.property, rating: 4.8, sold: 10 };
+            const myListings = products.filter(p => p.sellerKey === currentSeller.key);
+
+            document.getElementById('seller-avatar').src = `https://i.pravatar.cc/200?u=${currentSeller.key}`;
+            document.getElementById('seller-name').innerText = currentSeller.name;
+            document.getElementById('seller-role').innerText = `${info.dept} · ${info.property}`;
+            document.getElementById('seller-tenure').innerHTML = `<i class="fa-solid fa-clock mr-1"></i> Member since ${info.tenure}`;
+            document.getElementById('seller-listing-count').innerText = myListings.length;
+            document.getElementById('seller-sold-count').innerText = info.sold;
+            document.getElementById('seller-rating').innerHTML = `${info.rating.toFixed(1)}<i class="fa-solid fa-star text-[10px] ml-0.5"></i>`;
+
+            // Default to active tab
+            ['seller-tab-active','seller-tab-reviews','seller-tab-about'].forEach(id => {
+                const b = document.getElementById(id);
+                b.classList.remove('active');
+                b.classList.add('text-slate-400','border-transparent');
+            });
+            const t = document.getElementById('seller-tab-active');
+            t.classList.add('active');
+            t.classList.remove('text-slate-400','border-transparent');
+            renderSellerTab('active');
+        }
+
+        function switchSellerTab(tab, btn) {
+            ['seller-tab-active','seller-tab-reviews','seller-tab-about'].forEach(id => {
+                const b = document.getElementById(id);
+                b.classList.remove('active');
+                b.classList.add('text-slate-400','border-transparent');
+            });
+            btn.classList.add('active');
+            btn.classList.remove('text-slate-400','border-transparent');
+            renderSellerTab(tab);
+        }
+
+        function renderSellerTab(tab) {
+            const c = document.getElementById('seller-tab-content');
+            const myListings = products.filter(p => p.sellerKey === currentSeller.key);
+            const info = sellerInfo[currentSeller.key] || {};
+
+            if (tab === 'active') {
+                if (myListings.length === 0) {
+                    c.innerHTML = '<p class="text-center text-slate-400 text-sm py-8">No active listings</p>';
+                    return;
+                }
+                c.innerHTML = `<div class="grid grid-cols-2 gap-3">${myListings.map(productCard).join('')}</div>`;
+            } else if (tab === 'reviews') {
+                const reviews = sellerReviews[currentSeller.key] || sellerReviews.default;
+                c.innerHTML = `
+                    <div class="space-y-3">
+                    ${reviews.map(r => `
+                        <div class="p-4 bg-slate-50 rounded-2xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <img src="https://i.pravatar.cc/100?u=${r.avatar}" class="w-9 h-9 rounded-full">
+                                <div class="flex-1">
+                                    <p class="font-bold text-sm">${r.name}</p>
+                                    <p class="text-[10px] text-slate-400">${r.time}</p>
+                                </div>
+                                <div class="text-amber-400 text-xs">
+                                    ${'<i class="fa-solid fa-star"></i>'.repeat(r.rating)}${'<i class="fa-regular fa-star"></i>'.repeat(5 - r.rating)}
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">${r.text}</p>
+                        </div>
+                    `).join('')}
+                    </div>
+                `;
+            } else if (tab === 'about') {
+                c.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                            <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-briefcase mr-2 text-slate-400"></i> Department</span>
+                            <span class="text-sm font-bold">${info.dept || 'Staff'}</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                            <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-building mr-2 text-slate-400"></i> Property</span>
+                            <span class="text-sm font-bold">${info.property || currentSeller.property}</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                            <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-clock mr-2 text-slate-400"></i> Member since</span>
+                            <span class="text-sm font-bold">${info.tenure || '2022'}</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                            <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-bolt mr-2 text-slate-400"></i> Avg. response</span>
+                            <span class="text-sm font-bold">Within 1 hour</span>
+                        </div>
+                        <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl">
+                            <p class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider mb-1"><i class="fa-solid fa-shield-halved mr-1"></i> Verified Staff</p>
+                            <p class="text-xs text-emerald-700/80">Identity verified through HR records. Eligible to list and purchase staff marketplace items.</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function contactSeller() {
+            if (!currentSeller) return;
+            alert(`Opening chat with ${currentSeller.name}`);
         }
 
         window.onload = init;
