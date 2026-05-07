@@ -398,20 +398,25 @@
 
     <!-- BOTTOM NAV -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-slate-100 flex justify-around items-center px-2 py-3 z-[60] max-w-md mx-auto shadow-[0_-5px_15px_-5px_rgba(0,0,0,0.05)] rounded-t-[32px]">
-        <button onclick="navigateTo('home')" class="nav-btn flex flex-col items-center gap-1 active text-brand px-4 py-1">
+        <button onclick="navigateTo('home')" class="nav-btn flex flex-col items-center gap-1 active text-brand px-3 py-1">
             <i class="fa-solid fa-shop text-lg"></i>
             <span class="text-[9px] font-bold uppercase tracking-tighter">Market</span>
+        </button>
+        <button onclick="navigateTo('saved')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-3 py-1">
+            <i class="fa-solid fa-heart text-lg"></i>
+            <span class="text-[9px] font-bold uppercase tracking-tighter">Saved</span>
         </button>
         <button onclick="navigateTo('sell')" class="flex flex-col items-center -translate-y-6">
             <div class="w-14 h-14 bg-brand text-white rounded-2xl flex items-center justify-center shadow-brand ring-4 ring-white">
                 <i class="fa-solid fa-plus text-2xl"></i>
             </div>
         </button>
-        <button onclick="navigateTo('saved')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-4 py-1">
-            <i class="fa-solid fa-heart text-lg"></i>
-            <span class="text-[9px] font-bold uppercase tracking-tighter">Saved</span>
+        <button onclick="navigateTo('notifications')" class="nav-btn relative flex flex-col items-center gap-1 text-slate-400 px-3 py-1">
+            <i class="fa-solid fa-bell text-lg"></i>
+            <span class="absolute top-0 right-2 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+            <span class="text-[9px] font-bold uppercase tracking-tighter">Alerts</span>
         </button>
-        <button onclick="navigateTo('profile')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-4 py-1">
+        <button onclick="navigateTo('profile')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-3 py-1">
             <i class="fa-solid fa-circle-user text-lg"></i>
             <span class="text-[9px] font-bold uppercase tracking-tighter">Profile</span>
         </button>
